@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BookLeased;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookLeasedController extends Controller
 {
@@ -35,7 +36,18 @@ class BookLeasedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bookLeased = new BookLeased;
+        $bookLeased->bookId = $request->input('bookId');
+        $bookLeased->userId = Auth::id();
+        $bookLeased->leased = $request->input('leased');
+        if($bookLeased->save()){
+
+            return new BookLeasedResource($bookLeased);
+        }else{
+            return response()->json([
+                'msg' => 'error while saving',
+            ]);
+        }
     }
 
     /**
