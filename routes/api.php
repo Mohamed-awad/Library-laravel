@@ -31,3 +31,7 @@ Route::delete('/categories/{id}', 'CategoryController@destroy');
 Route::get('/books', 'BookController@index');
 
 Route::post('/books', 'BookController@store');
+
+Route::delete('/books/{id}', 'BookController@destroy');
+
+Route::put('/books/{id}', 'BookController@update');

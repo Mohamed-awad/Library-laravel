@@ -82,9 +82,26 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request,$id)
     {
-        //
+        {
+            $book = new Book;
+            $book=Book::findOrFail($id);
+            $book->title = $request->input('title');
+            $book->description = $request->input('description');
+            $book->author = $request->input('author');
+            $book->image = $request->input('image');
+            $book->NumberOfBook = $request->input('NumberOfBook');
+            $book->categoryId = $request->input('categoryId');
+            $book->leasePerDay = $request->input('leasePerDay');
+            if($book->save()){
+                return new BookResource($book);
+            }else{
+                return response()->json([
+                    'msg' => 'error while updating',
+                ]);
+            }
+        }
     }
 
     /**
@@ -93,8 +110,16 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
-        //
+
+        $book=Book::findOrFail($id);
+        if($book->delete()){
+            return new BookResource($book);
+        }else{
+            return response()->json([
+                'msg' => 'error while deleting',
+            ]);
+        }
     }
 }
