@@ -39,3 +39,6 @@ Route::post('/users', 'UserController@store');
 
 Route::delete('/users/{id}', 'UserController@destroy');
 Route::put('/users/{id}', 'UserController@update');
+Route::get('/books', 'BookController@index');
+
+Route::post('/books', 'BookController@store');
