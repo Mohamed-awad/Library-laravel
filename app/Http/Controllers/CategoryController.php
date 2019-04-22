@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Resources\Category as CategoryResource;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return CategoryResource::collection(Category::all());
     }
 
     /**
@@ -35,7 +36,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        if($category->save()){
+            return new CategoryResource($category);
+        }
+        else{
+            return new CategoryResource("error");
+        }
     }
 
     /**
@@ -78,8 +87,12 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        //$category=Category::findOrFail($id);
+        $category=Category::findOrFail($id);
+        if($category->delete()){
+            return new CategoryResource($category);
+        }
     }
 }
