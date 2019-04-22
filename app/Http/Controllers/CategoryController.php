@@ -41,9 +41,10 @@ class CategoryController extends Controller
         $category->description = $request->input('description');
         if($category->save()){
             return new CategoryResource($category);
-        }
-        else{
-            return new CategoryResource("error");
+        }else{
+            return response()->json([
+                'msg' => 'error while saving',
+            ]);
         }
     }
 
@@ -78,7 +79,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category = new Category;
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        if($category->save()){
+            return new CategoryResource($category);
+        }else{
+            return response()->json([
+                'msg' => 'error while updating',
+            ]);
+        }
     }
 
     /**
@@ -93,6 +103,10 @@ class CategoryController extends Controller
         $category=Category::findOrFail($id);
         if($category->delete()){
             return new CategoryResource($category);
+        }else{
+            return response()->json([
+                'msg' => 'error while deleting',
+            ]);
         }
     }
 }
