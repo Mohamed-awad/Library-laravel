@@ -41,9 +41,10 @@ class CategoryController extends Controller
         $category->description = $request->input('description');
         if($category->save()){
             return new CategoryResource($category);
-        }
-        else{
-            return new CategoryResource("error");
+        }else{
+            return response()->json([
+                'msg' => 'error while saving',
+            ]);
         }
     }
 
@@ -76,11 +77,21 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
+    public function update(Request $request,$id)
 
+    {
+        $category = new Category;
+        $category=Category::findOrFail($id);
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        if($category->save()){
+            return new CategoryResource($category);
+        }else{
+            return response()->json([
+                'msg' => 'error while updating',
+            ]);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -93,6 +104,10 @@ class CategoryController extends Controller
         $category=Category::findOrFail($id);
         if($category->delete()){
             return new CategoryResource($category);
+        }else{
+            return response()->json([
+                'msg' => 'error while deleting',
+            ]);
         }
     }
 }

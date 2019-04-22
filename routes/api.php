@@ -23,7 +23,7 @@ Route::post('/categories', 'CategoryController@store');
 
 //Route::get('/tasks/{task}', 'TaskController@show');
 
-//Route::put('/tasks/{task}', 'TaskController@update');
+Route::put('/categories/{id}', 'CategoryController@update');
 
 Route::delete('/categories/{id}', 'CategoryController@destroy');
 
