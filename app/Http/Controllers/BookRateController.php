@@ -35,7 +35,18 @@ class BookRateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bookRate = new BookRate;
+        $bookRate->bookId = $request->input('bookId');
+        $bookRate->userId = Auth::id();
+        $bookRate->Rate = $request->input('rate');
+        if($bookRate->save()){
+
+            return new BookRateResource($bookRate);
+        }else{
+            return response()->json([
+                'msg' => 'error while saving',
+            ]);
+        }
     }
 
     /**
