@@ -77,9 +77,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request,$id)
+
     {
         $category = new Category;
+        $category=Category::findOrFail($id);
         $category->name = $request->input('name');
         $category->description = $request->input('description');
         if($category->save()){
@@ -90,7 +92,6 @@ class CategoryController extends Controller
             ]);
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
