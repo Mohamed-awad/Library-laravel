@@ -22,7 +22,7 @@ class CreateBooksTable extends Migration
             $table->integer('NumberOfBook');
             $table->bigInteger('categoryId')->unsigned();
             $table->integer('leasePerDay');
-            $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade');
+            // $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

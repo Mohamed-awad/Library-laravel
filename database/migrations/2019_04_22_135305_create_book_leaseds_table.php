@@ -18,8 +18,8 @@ class CreateBookLeasedsTable extends Migration
             $table->bigInteger('bookId')->unsigned();
             $table->bigInteger('userId')->unsigned();
             $table->integer('leased');
-            $table->foreign('bookId')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('bookId')->references('id')->on('books')->onDelete('cascade');
+            // $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

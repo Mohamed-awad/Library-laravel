@@ -15,11 +15,11 @@ class CreateBookRatesTable extends Migration
     {
         Schema::create('book_rates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('bookId');
+            $table->bigInteger('bookId')->unsigned();
             $table->bigInteger('userId')->unsigned();
             $table->integer('Rate');
-            $table->foreign('bookId')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('bookId')->references('id')->on('books')->onDelete('cascade');
+            // $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
