@@ -76,11 +76,21 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
+    public function update(Request $request,$id)
 
+    {
+        $category=Category::findOrFail($id);
+        $category->name = $request->input('name');
+        $category->description = $request->input('description');
+        if($category->save()){
+            return new CategoryResource($category);
+        }
+        else{
+            return  response()->json([
+                'msg' => 'error',
+            ]);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
