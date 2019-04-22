@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Book;
 use Illuminate\Http\Request;
 
+use App\Http\Resources\Book as BookResource;
+
 class BookController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return BookResource::collection(Book::all());
     }
 
     /**
@@ -35,7 +37,20 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = new Book;
+        $book->title = $request->input('title');
+        $book->description = $request->input('description');
+        $book->author = $request->input('author');
+        $book->image = $request->input('image');
+        $book->NumberOfBook = $request->input('NumberOfBook');
+        $book->categoryId = $request->input('categoryId');
+        $book->leasePerDay = $request->input('leasePerDay');
+        if($book->save()){
+            return new BookResource($book);
+        }
+        else{
+            return new BookResource("error");
+        }
     }
 
     /**

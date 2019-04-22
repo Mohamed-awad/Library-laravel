@@ -48,7 +48,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display thephp artisan make:resource specified resource.
      *
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
@@ -70,7 +70,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update thphp artisan make:resourcee specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Category  $category

@@ -26,3 +26,8 @@ Route::post('/categories', 'CategoryController@store');
 //Route::put('/tasks/{task}', 'TaskController@update');
 
 Route::delete('/categories/{id}', 'CategoryController@destroy');
+
+
+Route::get('/books', 'BookController@index');
+
+Route::post('/books', 'BookController@store');
