@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-header( 'Access-Control-Allow-Headers: Authorization, Content-Type' );
+header('Access-Control-Allow-Headers: Authorization, Content-Type');
 
 use Illuminate\Http\Request;
 
@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', 'CategoryController@index');
+
 
 Route::get('/categories/{id}', 'CategoryController@show');
 
@@ -46,6 +47,7 @@ Route::post('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@sto
 Route::delete('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy');
 
 Route::get('/books', 'BookController@index');
+
 Route::post('/books', 'BookController@store');
 
 Route::get('/books/{id}', 'BookController@show');
@@ -53,3 +55,16 @@ Route::get('/books/{id}', 'BookController@show');
 Route::put('/books/{id}', 'BookController@update');
 
 Route::delete('/books/{id}', 'BookController@destroy');
+
+Route::post('/login', 'PassportController@login');
+
+Route::post('/register', 'PassportController@register');
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/user', 'PassportController@details');
+
+    //Route::resource('products', 'ProductController');
+
+});
+
+
