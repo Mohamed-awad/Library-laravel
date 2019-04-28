@@ -15,8 +15,7 @@ class AddForignToBooksTable extends Migration
     {
         Schema::table('books', function (Blueprint $table) {
             //
-             $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade');
-
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

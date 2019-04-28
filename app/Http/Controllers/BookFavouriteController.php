@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BookFavourite;
 use Illuminate\Http\Request;
+use App\Http\Resources\BookFavourite as BookFavouriteResource;
 
 class BookFavouriteController extends Controller
 {
@@ -15,6 +16,17 @@ class BookFavouriteController extends Controller
     public function index()
     {
         //
+        // $user = User::find($id);
+        // $fav_book=$user->favourites()->get();
+        // if($fav_book){
+        //     return new UserResource($fav_book);
+        // }
+        // else{
+        //     return  response()->json([
+        //         'msg' => 'error',
+        //     ]);
+        // } 
+        return BookFavouriteResource::collection(BookFavourite::all());
     }
 
     /**
@@ -33,19 +45,20 @@ class BookFavouriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($user_id,$book_id)
     {
-        $bookFavorite = new BookFavourite;
-        $bookFavorite->bookId = $request->input('bookId');
-        $bookFavorite->userId = Auth::id();
-        if($bookFavorite->save()){
-
-            return new BookFavouriteResource($bookFavorite);
-        }else{
-            return response()->json([
-                'msg' => 'error while saving',
-            ]);
+        //
+        $book_fav = new BookFavourite;
+        $book_fav->user_id=$user_id;
+        $book_fav->book_id=$book_id;
+        if($book_fav->save()){
+            return new BookFavouriteResource($book_fav);
         }
+        else{
+            return new BookFavouriteResource("error");
+        }
+
+
     }
 
     /**
@@ -88,8 +101,13 @@ class BookFavouriteController extends Controller
      * @param  \App\BookFavourite  $bookFavourite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BookFavourite $bookFavourite)
+    public function destroy($user_id,$book_id)
     {
         //
+       $book_fav = BookFavourite::where(['user_id'=>$user_id,'book_id'=>$book_id])->first();
+        if($book_fav->delete()){
+            return new BookFavouriteResource($book_fav);
+        }
+        // return redirect('/contact');
     }
 }

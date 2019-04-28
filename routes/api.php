@@ -25,8 +25,6 @@ Route::get('/categories/{id}', 'CategoryController@show');
 
 Route::post('/categories', 'CategoryController@store');
 
-//Route::get('/tasks/{task}', 'TaskController@show');
-
 Route::put('/categories/{id}', 'CategoryController@update');
 
 Route::delete('/categories/{id}', 'CategoryController@destroy');
@@ -34,21 +32,20 @@ Route::delete('/categories/{id}', 'CategoryController@destroy');
 ###################################################
 
 Route::get('/users', 'UserController@index');
-
 Route::post('/users', 'UserController@store');
-
-//Route::get('/users/{task}', 'TaskController@show');
-
-//Route::put('/users/{task}', 'TaskController@update');
-
+Route::get('/users/{id}', 'UserController@show');
 Route::delete('/users/{id}', 'UserController@destroy');
 
 Route::put('/users/{id}', 'UserController@update');
 
 ###################################################
 
-Route::get('/books', 'BookController@index');
 
+Route::get('/favourites', 'BookFavouriteController@index');
+Route::post('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@store');
+Route::delete('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy');
+
+Route::get('/books', 'BookController@index');
 Route::post('/books', 'BookController@store');
 
 Route::get('/books/{id}', 'BookController@show');

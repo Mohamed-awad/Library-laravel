@@ -14,9 +14,9 @@ class AddForignToBookleasedsTable extends Migration
     public function up()
     {
         Schema::table('book_leaseds', function (Blueprint $table) {
-            //
-              $table->foreign('bookId')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }
