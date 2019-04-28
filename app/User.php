@@ -1,12 +1,12 @@
 <?php
 
 namespace App;
-
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Model
 {
     use Notifiable;
 
@@ -42,16 +42,16 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment');
     }
-    public function books_leased()
+    public function leases()
     {
-        return $this->belongsToMany(Role::class, 'book_leaseds');
+        return $this->belongsToMany('App\Book', 'book_leaseds');
     }
-    public function books_favourite()
+    public function favourites()
     {
-        return $this->belongsToMany(Role::class, 'book_favourites');
+        return $this->belongsToMany('App\Book','book_favourites');
     }
-    public function books_rate()
+    public function rates()
     {
-        return $this->belongsToMany(Role::class, 'book_rates');
+        return $this->belongsToMany('App\Book', 'book_rates');
     }
 }

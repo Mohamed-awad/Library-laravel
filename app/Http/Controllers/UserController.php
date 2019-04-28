@@ -26,6 +26,7 @@ class UserController extends Controller
     public function create()
     {
         //
+          // return view('create',['data' => $data]);
     }
 
     /**
@@ -37,6 +38,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|unique:users|max:20|min:2',
+            'userName' => 'required|unique:users|max:20|min:2',
+            'phone' => 'required|unique:users|max:11',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
         $user = new User;
         $user->name = $request->input('name');
         $user->userName = $request->input('userName');
@@ -44,7 +53,7 @@ class UserController extends Controller
         $user->SSN = $request->input('SSN');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
-        //  return response()->json(["name"=>"aya"]);
+        
    
         if($user->save()){
             return new UserResource($user);
@@ -63,6 +72,17 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id);
+        $fav_book=$user->favourites()->get();
+        if($fav_book){
+            return new UserResource($fav_book);
+        }
+        else{
+            return  response()->json([
+                'msg' => 'error',
+            ]);
+        } 
+        // return view('show',['data' => $data]);
     }
 
     /**
@@ -74,6 +94,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
