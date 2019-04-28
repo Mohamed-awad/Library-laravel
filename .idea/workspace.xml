@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="147b00fb-2506-4010-8de6-d22764c0b379" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookFavouriteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookFavouriteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BookRateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BookRateController.php" afterDir="false" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,6 +21,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="277">
@@ -23,25 +29,73 @@
               <folding>
                 <element signature="e#40#57#0#PHP" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135305_create_book_leaseds_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="346">
+              <caret line="19" column="35" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="35" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="950">
               <caret line="38" column="51" lean-forward="true" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BookLeasedController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="49" column="9" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="49" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BookFavouriteController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="479">
+              <caret line="47" column="9" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="47" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/BookRate.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BookRateController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="518">
+              <caret line="46" column="46" lean-forward="true" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/User.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-797">
               <caret line="4" column="14" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="14" />
             </state>
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135239_create_book_rates_table.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135253_create_book_favourites_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-230" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
           </provider>
         </entry>
       </file>
@@ -67,8 +121,14 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/BookController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/BookLeasedController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/BookFavouriteController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/BookRateController.php" />
       </list>
     </option>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -192,6 +252,32 @@
             <path>
               <item name="Library-laravel" type="b2602c69:ProjectViewProjectNode" />
               <item name="Library-laravel" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library-laravel" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library-laravel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library-laravel" type="462c0819:PsiDirectoryNode" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -236,22 +322,38 @@
       <option name="presentableId" value="Default" />
       <updated>1555940327976</updated>
       <workItem from="1555940335613" duration="4731000" />
+<<<<<<< HEAD
       <workItem from="1555956140768" duration="3434000" />
       <workItem from="1555968728700" duration="3845000" />
       <workItem from="1555973062653" duration="11000" />
       <workItem from="1555973622064" duration="3551000" />
       <workItem from="1556039289557" duration="398000" />
       <workItem from="1556443759860" duration="6246000" />
+=======
+      <workItem from="1555956140768" duration="2343000" />
+      <workItem from="1555962571525" duration="968000" />
+      <workItem from="1555964829407" duration="2788000" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="22216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16878805" />
+=======
+    <option name="totallyTimeSpent" value="10830000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="71" y="25" width="1849" height="1055" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25989962" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -266,7 +368,11 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.21166307" />
+=======
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27152318" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -293,28 +399,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/bin/psysh">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="25">
           <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
+=======
+        <state relative-caret-position="108">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="14" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Book.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
+        <state relative-caret-position="108">
           <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135133_create_books_table.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="75">
+=======
+        <state relative-caret-position="81">
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
           <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135305_create_book_leaseds_table.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+=======
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
     <entry file="file://$PROJECT_DIR$/app/Http/Resources/Category.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -323,6 +441,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Resources/Book.php">
       <provider selected="true" editor-type-id="text-editor" />
+<<<<<<< HEAD
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor" />
@@ -338,6 +457,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+=======
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="47" column="9" lean-forward="true" selection-start-line="38" selection-start-column="7" selection-end-line="47" selection-end-column="9" />
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
           <folding>
             <element signature="e#40#57#0#PHP" expanded="true" />
           </folding>
@@ -345,6 +471,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.php">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="950">
           <caret line="38" column="51" lean-forward="true" selection-start-line="38" selection-start-column="51" selection-end-line="38" selection-end-column="51" />
@@ -355,6 +482,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-797">
           <caret line="4" column="14" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="14" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/BookLeased.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BookController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="74" column="10" lean-forward="true" selection-start-line="74" selection-start-column="10" selection-end-line="74" selection-end-column="10" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+>>>>>>> d3ee1255a2554541fe8ccae68e3e23c52d42467d
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135305_create_book_leaseds_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="35" column="6" lean-forward="true" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135253_create_book_favourites_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BookFavouriteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="47" column="9" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="47" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/BookRate.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BookLeasedController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="49" column="9" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="49" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_22_135239_create_book_rates_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BookRateController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="46" column="46" lean-forward="true" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
         </state>
       </provider>
     </entry>

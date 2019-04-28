@@ -19,8 +19,8 @@ class BookController extends Controller
     {
         $book = BookResource::collection(Book::all());
 
-        if($book->count() > 0){
-            return $book->count();
+        if($book){
+            return $book;
         }else{
             return response()->json([
                 'msg' => 'error while getting book',

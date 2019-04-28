@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header( 'Access-Control-Allow-Headers: Authorization, Content-Type' );
 
 use Illuminate\Http\Request;
 
@@ -19,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/categories', 'CategoryController@index');
 
+Route::get('/categories/{id}', 'CategoryController@show');
+
 Route::post('/categories', 'CategoryController@store');
 
 //Route::get('/tasks/{task}', 'TaskController@show');
@@ -27,6 +31,21 @@ Route::put('/categories/{id}', 'CategoryController@update');
 
 Route::delete('/categories/{id}', 'CategoryController@destroy');
 
+###################################################
+
+Route::get('/users', 'UserController@index');
+
+Route::post('/users', 'UserController@store');
+
+//Route::get('/users/{task}', 'TaskController@show');
+
+//Route::put('/users/{task}', 'TaskController@update');
+
+Route::delete('/users/{id}', 'UserController@destroy');
+
+Route::put('/users/{id}', 'UserController@update');
+
+###################################################
 
 Route::get('/books', 'BookController@index');
 
@@ -34,6 +53,6 @@ Route::post('/books', 'BookController@store');
 
 Route::get('/books/{id}', 'BookController@show');
 
-Route::delete('/books/{id}', 'BookController@destroy');
-
 Route::put('/books/{id}', 'BookController@update');
+
+Route::delete('/books/{id}', 'BookController@destroy');

@@ -35,7 +35,17 @@ class BookFavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bookFavorite = new BookFavourite;
+        $bookFavorite->bookId = $request->input('bookId');
+        $bookFavorite->userId = Auth::id();
+        if($bookFavorite->save()){
+
+            return new BookFavouriteResource($bookFavorite);
+        }else{
+            return response()->json([
+                'msg' => 'error while saving',
+            ]);
+        }
     }
 
     /**
