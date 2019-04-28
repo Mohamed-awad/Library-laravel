@@ -28,3 +28,19 @@ Route::post('/categories', 'CategoryController@store');
 Route::put('/categories/{id}', 'CategoryController@update');
 
 Route::delete('/categories/{id}', 'CategoryController@destroy');
+
+
+
+Route::get('/users', 'UserController@index');
+
+Route::post('/users', 'UserController@store');
+
+//Route::get('/users/{task}', 'TaskController@show');
+
+//Route::put('/users/{task}', 'TaskController@update');
+
+Route::delete('/users/{id}', 'UserController@destroy');
+Route::put('/users/{id}', 'UserController@update');
+Route::get('/books', 'BookController@index');
+
+Route::post('/books', 'BookController@store');
