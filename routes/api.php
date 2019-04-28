@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/categories', 'CategoryController@index');
 
+
 Route::get('/categories/{id}', 'CategoryController@show');
 
 Route::post('/categories', 'CategoryController@store');
@@ -41,3 +42,18 @@ Route::delete('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@d
 
 Route::get('/books', 'BookController@index');
 Route::post('/books', 'BookController@store');
+
+////////////////passport
+Route::post('/login', 'PassportController@login');
+Route::post('/register', 'PassportController@register');
+ 
+Route::middleware('auth:api')->group(function () {
+    Route::get('/user', 'PassportController@details');
+ 
+    //Route::resource('products', 'ProductController');
+
+});
+
+/////////////end
+
+
