@@ -15,8 +15,8 @@ class AddForignToBookRatesTable extends Migration
     {
         Schema::table('book_rates', function (Blueprint $table) {
             //
-            $table->foreign('bookId')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }
