@@ -20,9 +20,9 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('image');
             $table->integer('NumberOfBook');
-            $table->bigInteger('categoryId')->unsigned();
             $table->integer('leasePerDay');
-            // $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade');
+            $table->bigInteger('category_id')->unsigned();
+
             $table->timestamps();
         });
     }

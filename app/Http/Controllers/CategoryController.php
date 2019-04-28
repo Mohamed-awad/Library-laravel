@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Resources\Category as CategoryResource;
+use App\Http\Resources\CategoryCollection;
 
 class CategoryController extends Controller
 {
@@ -15,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::all());
+        //return CategoryResource::collection(Category::all());
+        return new CategoryCollection(Category::paginate(15));
     }
 
     /**
@@ -54,9 +56,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        $category = new Category;
+        $category=Category::findOrFail($id);
+        return new CategoryResource($category);
     }
 
     /**
