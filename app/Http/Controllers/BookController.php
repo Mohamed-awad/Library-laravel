@@ -6,6 +6,7 @@ use App\Book;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\Book as BookResource;
+use mysql_xdevapi\Collection;
 
 class BookController extends Controller
 {
@@ -16,7 +17,15 @@ class BookController extends Controller
      */
     public function index()
     {
-        return BookResource::collection(Book::all());
+        $book = BookResource::collection(Book::all());
+
+        if($book->count() > 0){
+            return $book->count();
+        }else{
+            return response()->json([
+                'msg' => 'error while getting book',
+            ]);
+        }
     }
 
     /**
@@ -45,7 +54,7 @@ class BookController extends Controller
         $book->NumberOfBook = $request->input('NumberOfBook');
         $book->categoryId = $request->input('categoryId');
         $book->leasePerDay = $request->input('leasePerDay');
-        if($book->save()){
+        if($book->save  ()){
             return new BookResource($book);
         }
         else{
@@ -59,9 +68,17 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($id)
     {
-        //
+        $book = new BookResource(Book::find($id));
+
+        if($book){
+            return $book;
+        }else{
+            return response()->json([
+                'msg' => 'error while getting book',
+            ]);
+        }
     }
 
     /**
@@ -112,7 +129,6 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-
         $book=Book::findOrFail($id);
         if($book->delete()){
             return new BookResource($book);
