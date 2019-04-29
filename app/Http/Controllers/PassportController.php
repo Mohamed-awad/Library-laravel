@@ -1,10 +1,10 @@
 <?php
- 
+
 namespace App\Http\Controllers;
- 
+
 use App\User;
 use Illuminate\Http\Request;
- 
+
 class PassportController extends Controller
 {
     /**
@@ -20,7 +20,7 @@ class PassportController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
- 
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -29,12 +29,12 @@ class PassportController extends Controller
             'phone'=>$request->phone,
             'SSN'=>$request->SSN,
         ]);
- 
+
         $token = $user->createToken('TutsForWeb')->accessToken;
- 
+
         return response()->json(['token' => $token, 'user' => $user], 200);
     }
- 
+
     /**
      * Handles Login Request
      *
@@ -47,15 +47,15 @@ class PassportController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
- 
+
         if (auth()->attempt($credentials)) {
             $token = auth()->user()->createToken('TutsForWeb')->accessToken;
-            return response()->json(['token' => $token], 200);
+            return response()->json(['token' => $token, 'user' => auth()->user()], 200);
         } else {
             return response()->json(['error' => 'UnAuthorised'], 401);
         }
     }
- 
+
     /**
      * Returns Authenticated User Details
      *
