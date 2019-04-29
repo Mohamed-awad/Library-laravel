@@ -21,7 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/categories', 'CategoryController@index');
 
-
 Route::get('/categories/{id}', 'CategoryController@show');
 
 Route::post('/categories', 'CategoryController@store');
@@ -33,18 +32,26 @@ Route::delete('/categories/{id}', 'CategoryController@destroy');
 ###################################################
 
 Route::get('/users', 'UserController@index');
+
 Route::post('/users', 'UserController@store');
+
 Route::get('/users/{id}', 'UserController@show');
+
 Route::delete('/users/{id}', 'UserController@destroy');
 
 Route::put('/users/{id}', 'UserController@update');
 
+Route::post('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@store');
+
+Route::delete('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy');
+
 ###################################################
 
-
 Route::get('/favourites', 'BookFavouriteController@index');
-Route::post('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@store');
-Route::delete('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy');
+
+Route::get('/comment/{id}', 'CommentController@index');
+
+#####################################################
 
 Route::get('/books', 'BookController@index');
 
@@ -55,6 +62,8 @@ Route::get('/books/{id}', 'BookController@show');
 Route::put('/books/{id}', 'BookController@update');
 
 Route::delete('/books/{id}', 'BookController@destroy');
+
+#####################################################
 
 Route::post('/login', 'PassportController@login');
 
