@@ -46,6 +46,7 @@ Route::delete('/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy
 
 
 Route::get('/books', 'BookController@index');
+Route::get('/books/{id}', 'BookController@show');
 Route::post('/books', 'BookController@store');
 
 ////////////////passport
