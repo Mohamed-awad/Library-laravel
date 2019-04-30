@@ -15,7 +15,10 @@ class BookLeasedController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'msg' => 'hi from index@book leased',
+        ]);
+
     }
 
     /**

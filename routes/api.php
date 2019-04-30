@@ -18,17 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', 'CategoryController@index');
-
-
 Route::get('/categories/{id}', 'CategoryController@show');
-
 Route::post('/categories', 'CategoryController@store');
-
 Route::put('/categories/{id}', 'CategoryController@update');
-
 Route::delete('/categories/{id}', 'CategoryController@destroy');
 
-
+Route::get('/profits', 'BookLeasedController@index');
+Route::post('/booklease', 'BookLeasedController@store' );
 
 Route::get('/users', 'UserController@index');
 Route::post('/users', 'UserController@store');
