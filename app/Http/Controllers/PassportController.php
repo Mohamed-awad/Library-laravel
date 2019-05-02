@@ -43,8 +43,13 @@ class PassportController extends Controller
      */
     public function login(Request $request)
     {
+        if($request->isEmail){
+            $keyword = 'email';
+        }else{
+            $keyword = 'userName';
+        }
         $credentials = [
-            'email' => $request->email,
+            $keyword => $request->loginKeyword,
             'password' => $request->password
         ];
 
