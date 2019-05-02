@@ -16,20 +16,19 @@ class BookFavouriteController extends Controller
      */
     public function index($user_id)
     {
-        //
-        // $user = User::find($id);
-        // $fav_book=$user->favourites()->get();
-        // if($fav_book){
-        //     return new UserResource($fav_book);
-        // }
-        // else{
-        //     return  response()->json([
-        //         'msg' => 'error',
-        //     ]);
-        // } 
-        // $user_fav = User::find($user_id)->favourites()->get();
-
-        return BookFavouriteResource::collection(BookFavourite::all());
+        //return fav of spacific user
+         $user = User::find($user_id);
+         $fav_book=$user->favourites()->get();
+         if($fav_book){
+             return new BookFavouriteResource($fav_book);
+         }
+         else{
+             return  response()->json([
+                 'msg' => 'error',
+             ]);
+         }
+        //return all favourites
+        //return BookFavouriteResource::collection(BookFavourite::all());
     }
 
     /**
