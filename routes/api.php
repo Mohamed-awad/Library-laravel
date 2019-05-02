@@ -44,12 +44,17 @@ Route::put('/users/{id}', 'UserController@update');
 Route::post('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@store');
 
 Route::delete('/users/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy');
+
 Route::get('/{user_id}/favourites', 'BookFavouriteController@index');
+
 Route::post('/{user_id}/favourite/{book_id}', 'BookFavouriteController@store');
+
 Route::delete('/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy');
 
 Route::get('/comments', 'CommentController@index');
+
 Route::post('/comments/{book_id}', 'CommentController@store');
+
 Route::delete('/comments/{book_id}', 'CommentController@destroy');
 
 
@@ -63,9 +68,10 @@ Route::get('/comment/{id}', 'CommentController@index');
 
 Route::get('/books', 'BookController@index');
 
+Route::get('/books/{id}', 'BookController@show');
+
 Route::post('/books', 'BookController@store');
 
-Route::get('/books/{id}', 'BookController@show');
 
 Route::put('/books/{id}', 'BookController@update');
 
@@ -83,5 +89,3 @@ Route::middleware('auth:api')->group(function () {
     //Route::resource('products', 'ProductController');
 
 });
-
-

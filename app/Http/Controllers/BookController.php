@@ -70,13 +70,15 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book = new BookResource(Book::find($id));
 
-        if($book){
-            return $book;
-        }else{
-            return response()->json([
-                'msg' => 'error while getting book',
+        //
+        $book_comment = Book::find($id)->comments()->get();
+        if($book_comment ){
+            return new BookResource($book_comment);
+        }
+        else{
+            return  response()->json([
+                'msg' => 'error',
             ]);
         }
     }
