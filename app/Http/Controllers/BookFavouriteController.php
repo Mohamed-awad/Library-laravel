@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BookFavourite;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\BookFavourite as BookFavouriteResource;
 
@@ -13,7 +14,7 @@ class BookFavouriteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
         //
         // $user = User::find($id);
@@ -26,6 +27,8 @@ class BookFavouriteController extends Controller
         //         'msg' => 'error',
         //     ]);
         // } 
+        // $user_fav = User::find($user_id)->favourites()->get();
+
         return BookFavouriteResource::collection(BookFavourite::all());
     }
 

@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //
-    public function book()
+    public function books()
     {
         return $this->belongsTo('App\Book');
     }
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo('App\User');
     }

@@ -59,9 +59,18 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($id)
     {
         //
+        $book_comment = Book::find($id)->comments()->get();
+        if($book_comment ){
+            return new BookResource($book_comment);
+        }
+        else{
+            return  response()->json([
+                'msg' => 'error',
+            ]);
+        }
     }
 
     /**

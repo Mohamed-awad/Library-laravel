@@ -74,14 +74,16 @@ class UserController extends Controller
         //
         $user = User::find($id);
         $fav_book=$user->favourites()->get();
-        if($fav_book){
+        if($fav_book != []){
             return new UserResource($fav_book);
         }
-        else{
+        else if($user){
+            return new UserResource($user);
+        } else{
             return  response()->json([
                 'msg' => 'error',
             ]);
-        } 
+        }
         // return view('show',['data' => $data]);
     }
 
