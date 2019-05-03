@@ -15,26 +15,40 @@ class PassportController extends Controller
      */
     public function register(Request $request)
     {
-        $this->validate($request, [
+        $user = User::create($request->all());
+        if($request->file('image')){
+            $filename=time().'_'.$request->file('image')->getClientOriginalName();
+
+        }
+
+        /*$this->validate($request, [
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-        ]);
+        ]);*/
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'userName'=>$request->userName,
-            'phone'=>$request->phone,
-            'SSN'=>$request->SSN,
-        ]);
+       //
 
-        $token = $user->createToken('TutsForWeb')->accessToken;
+        //$token = $user->createToken('TutsForWeb')->accessToken;
 
-        return response()->json(['token' => $token, 'user' => $user], 200);
+        ////////////////////////////////
+        //$student = Student::create($request->all());
+
+        // do we have an image to process?
+        if($request->image){
+            //$filename = substr( md5( $student->id . '-' . time() ), 0, 15) . '.' . $request->file('image')->getClientOriginalExtension();
+            $filename = $student->id.'-'.substr( md5( $student->id . '-' . time() ), 0, 15) . '.jpg'; // for now just assume .jpg : \
+            $path = public_path('alumni-photos/' . $filename);
+            Image::make($request->image)->orientate()->fit(500)->save($path);
+
+            // now update the photo column on the student record
+            $student->photo = $filename;
+            $student->save();
+        }
+
+        return 'success';
+        ///////////////////////////////
     }
-
     /**
      * Handles Login Request
      *
@@ -43,6 +57,7 @@ class PassportController extends Controller
      */
     public function login(Request $request)
     {
+
         if($request->isEmail){
             $keyword = 'email';
         }else{
