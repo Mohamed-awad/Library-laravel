@@ -18,6 +18,7 @@ class PassportController extends Controller
         $user = User::create($request->all());
         if($request->file('image')){
             $filename=time().'_'.$request->file('image')->getClientOriginalName();
+            $path = public_path('alumni-photos/' . $filename);
 
         }
 

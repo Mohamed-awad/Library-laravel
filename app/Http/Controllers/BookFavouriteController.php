@@ -44,29 +44,25 @@ class BookFavouriteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store($user_id,$book_id)
+    public function store($user_id, $book_id)
     {
-        //
         $book_fav = new BookFavourite;
-        $book_fav->user_id=$user_id;
-        $book_fav->book_id=$book_id;
-        if($book_fav->save()){
+        $book_fav->user_id = $user_id;
+        $book_fav->book_id = $book_id;
+        if ($book_fav->save()) {
             return new BookFavouriteResource($book_fav);
-        }
-        else{
+        } else {
             return new BookFavouriteResource("error");
         }
-
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\BookFavourite  $bookFavourite
+     * @param  \App\BookFavourite $bookFavourite
      * @return \Illuminate\Http\Response
      */
     public function show(BookFavourite $bookFavourite)
@@ -77,7 +73,7 @@ class BookFavouriteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BookFavourite  $bookFavourite
+     * @param  \App\BookFavourite $bookFavourite
      * @return \Illuminate\Http\Response
      */
     public function edit(BookFavourite $bookFavourite)
@@ -88,8 +84,8 @@ class BookFavouriteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BookFavourite  $bookFavourite
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\BookFavourite $bookFavourite
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, BookFavourite $bookFavourite)
@@ -100,14 +96,14 @@ class BookFavouriteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BookFavourite  $bookFavourite
+     * @param  \App\BookFavourite $bookFavourite
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user_id,$book_id)
+    public function destroy($user_id, $book_id)
     {
         //
-       $book_fav = BookFavourite::where(['user_id'=>$user_id,'book_id'=>$book_id])->first();
-        if($book_fav->delete()){
+        $book_fav = BookFavourite::where(['user_id' => $user_id, 'book_id' => $book_id])->first();
+        if ($book_fav->delete()) {
             return new BookFavouriteResource($book_fav);
         }
         // return redirect('/contact');
