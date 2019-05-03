@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageServiceProvider;
 
 class PassportController extends Controller
 {
@@ -15,40 +16,22 @@ class PassportController extends Controller
      */
     public function register(Request $request)
     {
-        $user = User::create($request->all());
-        if($request->file('image')){
-            $filename=time().'_'.$request->file('image')->getClientOriginalName();
-            $path = public_path('alumni-photos/' . $filename);
-
-        }
-
-        /*$this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-        ]);*/
+        ]);
 
-       //
-
-        //$token = $user->createToken('TutsForWeb')->accessToken;
-
-        ////////////////////////////////
-        //$student = Student::create($request->all());
-
-        // do we have an image to process?
-        if($request->image){
-            //$filename = substr( md5( $student->id . '-' . time() ), 0, 15) . '.' . $request->file('image')->getClientOriginalExtension();
-            $filename = $student->id.'-'.substr( md5( $student->id . '-' . time() ), 0, 15) . '.jpg'; // for now just assume .jpg : \
-            $path = public_path('alumni-photos/' . $filename);
-            Image::make($request->image)->orientate()->fit(500)->save($path);
-
-            // now update the photo column on the student record
-            $student->photo = $filename;
-            $student->save();
+        $user = User::create($request->all());
+        if($files=$request->file('image')){
+            $name=time().$files->getClientOriginalName();
+            $user->image = $name;
+            $files->move('image',$name);
+            $user->save();
         }
 
-        return 'success';
-        ///////////////////////////////
+        $token = $user->createToken('TutsForWeb')->accessToken;
+        return response()->json(['token' => $token, 'user' => $user], 200);
     }
     /**
      * Handles Login Request
