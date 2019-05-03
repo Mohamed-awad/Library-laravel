@@ -17,6 +17,7 @@ class BookController extends Controller
      */
     public function index()
     {
+        return "ssssss";
         $book = BookResource::collection(Book::all());
 
         if($book){
