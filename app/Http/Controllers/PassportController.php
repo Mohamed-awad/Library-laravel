@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageServiceProvider;
 
 class PassportController extends Controller
 {
@@ -21,20 +22,17 @@ class PassportController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'userName' => $request->userName,
-            'phone' => $request->phone,
-            'SSN' => $request->SSN,
-        ]);
+        $user = User::create($request->all());
+        if($files=$request->file('image')){
+            $name=time().$files->getClientOriginalName();
+            $user->image = $name;
+            $files->move('image',$name);
+            $user->save();
+        }
 
         $token = $user->createToken('TutsForWeb')->accessToken;
-
         return response()->json(['token' => $token, 'user' => $user], 200);
     }
-
     /**
      * Handles Login Request
      *
@@ -43,6 +41,7 @@ class PassportController extends Controller
      */
     public function login(Request $request)
     {
+
         if($request->isEmail){
             $keyword = 'email';
         }else{
