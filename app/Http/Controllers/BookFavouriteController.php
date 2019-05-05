@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// use Validator;
 use App\BookFavourite;
 use App\User;
 use Illuminate\Http\Request;
@@ -48,12 +48,16 @@ class BookFavouriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($user_id,$book_id)
+    public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'user_id' => 'unique:book_favourites,book_id',
+            'book_id' => 'unique:book_favourites,user_id'
+        ]);
         $book_fav = new BookFavourite;
-        $book_fav->user_id=$user_id;
-        $book_fav->book_id=$book_id;
+        $book_fav->user_id=$request->user_id;
+        $book_fav->book_id=$request->book_id;
         if($book_fav->save()){
             return new BookFavouriteResource($book_fav);
         }
