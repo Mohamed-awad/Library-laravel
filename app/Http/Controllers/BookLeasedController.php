@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\BookLeased;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
 
 class BookLeasedController extends Controller
@@ -14,10 +18,40 @@ class BookLeasedController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {       
+                // $today = new DateTime('now');
+        // $todayTimestamp = $today->getTimestamp();
+                // $bookLeased->week = date('W', $todayTimestamp);
+        // $bookLeased->year = date('Y', $todayTimestamp); 
+        
+        
+        $today = new DateTime('now');
+        $todayTimestamp = $today->getTimestamp();
+        $week = date('W', $todayTimestamp);
+        $year = date('y',$todayTimestamp);
+
+        // $nameOfDay = date('D', strtotime($today));
+
+        $date = $today->modify('-1 month');
+        $last_month = BookLeased::where('created_at', '>', $date)->orderBy('created_at','desc')->get();
+        // $profit = DB::table('book_leaseds')->orderBy('created_at');
+        // ->where('active', false)
+        // $profit = BookLeased::all()
+        // $sorted = $profit->;
         return response()->json([
-            'msg' => 'hi from index@book leased',
+            'date' => $max,
         ]);
+        // return $date;
+        // find(1)->comments()->get();
+        // if($user_comments){
+        //     return new CommentResource($user_comments);
+        // }else{
+        //     return response()->json([
+        //         'msg' => 'error while saving',
+        //     ]);
+        // return response()->json([
+        //     'msg' => 'hi from index@book leased',
+        // ]);
 
     }
 
@@ -39,10 +73,13 @@ class BookLeasedController extends Controller
      */
     public function store(Request $request)
     {
+
         $bookLeased = new BookLeased;
         $bookLeased->bookId = $request->input('bookId');
         $bookLeased->userId = Auth::id();
         $bookLeased->leased = $request->input('leased');
+       
+
         if($bookLeased->save()){
 
             return new BookLeasedResource($bookLeased);
