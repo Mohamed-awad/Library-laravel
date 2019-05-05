@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DateTime;
 use App\BookLeased;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,17 +40,14 @@ class BookLeasedController extends Controller
      */
     public function store(Request $request)
     {
-
-        // $date = new Date();
-        // $currentDate = $date.now();
-        // $date2 = new DateTime($currentDate);
-        // $week = $date->format("W");
-        
         $bookLeased = new BookLeased;
-        $bookLeased->NumOfWeek = 5;
+        $currentDate = date("Y/m/d");
+        $date2 = new DateTime($currentDate);
+        $week = $date2->format("W");
+        $bookLeased->NumOfWeek = $week;
         $bookLeased->book_id = $request->input('book_id');
        // $bookLeased->userId = Auth::id();
-       $bookLeased->user_id = 1;
+       $bookLeased->user_id = 6;
         $bookLeased->leased = $request->input('leased');
         if($bookLeased->save()){
 
