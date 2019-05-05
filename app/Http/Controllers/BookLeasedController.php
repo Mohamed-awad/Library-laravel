@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BookLeased;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\BookLease as BookLeaseResource;
 
 class BookLeasedController extends Controller
 {
@@ -15,7 +16,10 @@ class BookLeasedController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'msg' => 'hi from index@book leased',
+        ]);
+
     }
 
     /**
@@ -36,13 +40,21 @@ class BookLeasedController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $date = new Date();
+        // $currentDate = $date.now();
+        // $date2 = new DateTime($currentDate);
+        // $week = $date->format("W");
+        
         $bookLeased = new BookLeased;
-        $bookLeased->bookId = $request->input('bookId');
-        $bookLeased->userId = Auth::id();
+        $bookLeased->NumOfWeek = 5;
+        $bookLeased->book_id = $request->input('book_id');
+       // $bookLeased->userId = Auth::id();
+       $bookLeased->user_id = 1;
         $bookLeased->leased = $request->input('leased');
         if($bookLeased->save()){
 
-            return new BookLeasedResource($bookLeased);
+            return new BookLeaseResource($bookLeased);
         }else{
             return response()->json([
                 'msg' => 'error while saving',

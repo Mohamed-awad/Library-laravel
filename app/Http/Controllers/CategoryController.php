@@ -106,6 +106,7 @@ class CategoryController extends Controller
     {
         //$category=Category::findOrFail($id);
         $category=Category::findOrFail($id);
+
         if($category->delete()){
             return new CategoryResource($category);
         }else{

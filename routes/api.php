@@ -18,17 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/categories', 'CategoryController@index');
-
-
 Route::get('/categories/{id}', 'CategoryController@show');
-
 Route::post('/categories', 'CategoryController@store');
-
 Route::put('/categories/{id}', 'CategoryController@update');
-
 Route::delete('/categories/{id}', 'CategoryController@destroy');
 
-
+Route::get('/profits', 'BookLeasedController@index');
+Route::post('/booklease', 'BookLeasedController@store');
 
 Route::get('/users', 'UserController@index');
 Route::post('/users', 'UserController@store');
@@ -40,9 +36,9 @@ Route::get('/{user_id}/favourites', 'BookFavouriteController@index');
 Route::post('/{user_id}/favourite/{book_id}', 'BookFavouriteController@store');
 Route::delete('/{user_id}/favourite/{book_id}', 'BookFavouriteController@destroy');
 
- Route::get('/comments', 'CommentController@index');
- Route::post('/comments/{book_id}', 'CommentController@store');
- Route::delete('/comments/{book_id}', 'CommentController@destroy');
+Route::get('/comments/{book_id}', 'CommentController@index');
+Route::post('/comments/{book_id}/{user_id}', 'CommentController@store');
+Route::delete('/comments/{comment_id}', 'CommentController@destroy');
 
 
 Route::get('/books', 'BookController@index');
@@ -52,10 +48,10 @@ Route::post('/books', 'BookController@store');
 ////////////////passport
 Route::post('/login', 'PassportController@login');
 Route::post('/register', 'PassportController@register');
- 
+
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', 'PassportController@details');
- 
+
     //Route::resource('products', 'ProductController');
 
 });
