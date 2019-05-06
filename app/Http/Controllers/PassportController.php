@@ -1,11 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\User;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageServiceProvider;
-
 class PassportController extends Controller
 {
     /**
@@ -21,15 +17,20 @@ class PassportController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
-
-        $user = User::create($request->all());
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'userName'=>$request->userName,
+            'phone'=>$request->phone,
+            'SSN'=>$request->SSN,
+        ]);
         if($files=$request->file('image')){
             $name=time().$files->getClientOriginalName();
             $user->image = $name;
             $files->move('image',$name);
             $user->save();
         }
-
         $token = $user->createToken('TutsForWeb')->accessToken;
         return response()->json(['token' => $token, 'user' => $user], 200);
     }
@@ -41,7 +42,6 @@ class PassportController extends Controller
      */
     public function login(Request $request)
     {
-
         if($request->isEmail){
             $keyword = 'email';
         }else{
@@ -51,7 +51,6 @@ class PassportController extends Controller
             $keyword => $request->loginKeyword,
             'password' => $request->password
         ];
-
         if (auth()->attempt($credentials)) {
             $token = auth()->user()->createToken('TutsForWeb')->accessToken;
             return response()->json(['token' => $token, 'user' => auth()->user()], 200);
@@ -59,7 +58,6 @@ class PassportController extends Controller
             return response()->json(['error' => 'UnAuthorised'], 401);
         }
     }
-
     /**
      * Returns Authenticated User Details
      *
