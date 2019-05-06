@@ -60,9 +60,9 @@ class BookLeasedController extends Controller
         $year = date('Y',$todayTimestamp);
         $bookLeased = new BookLeased;
         $bookLeased->NumOfWeek = "$year"."$week";
-        // $bookLeased->Year =date('Y',$todayTimestamp);
         $bookLeased->book_id = $request->input('book_id');
         $bookLeased->user_id = Auth::id();
+    //    $bookLeased->user_id = 6;
         $bookLeased->leased = $request->input('leased');
         if($bookLeased->save()){
             return new BookLeaseResource($bookLeased);
