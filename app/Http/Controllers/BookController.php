@@ -18,7 +18,8 @@ class BookController extends Controller
     public function index()
     {
         //return "ssssss";
-        $book = BookResource::collection(Book::all());
+
+        $book = BookResource::collection(Book::with('category')->get());
 
         if($book){
             return $book;
