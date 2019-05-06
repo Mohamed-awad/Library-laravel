@@ -12,12 +12,13 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+/*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
 
-Route::get('/categories', 'CategoryController@index');
+
 Route::get('/categories/{id}', 'CategoryController@show');
 Route::post('/categories', 'CategoryController@store');
 Route::put('/categories/{id}', 'CategoryController@update');
@@ -41,20 +42,22 @@ Route::post('/comments/{book_id}/{user_id}', 'CommentController@store');
 Route::delete('/comments/{comment_id}', 'CommentController@destroy');
 
 
-Route::get('/books', 'BookController@index');
-Route::get('/books/{id}', 'BookController@show');
-Route::post('/books', 'BookController@store');
+Route::get('/bookss', 'BookController@index');
+Route::get('/bookss/{id}', 'BookController@show');
+Route::post('/bookss', 'BookController@store');
 
-////////////////passport
+//////////////passport
 Route::post('/login', 'PassportController@login');
 Route::post('/register', 'PassportController@register');
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', 'PassportController@details');
+    Route::get('/categories', 'CategoryController@index');
 
     //Route::resource('products', 'ProductController');
 
 });
+
 
 /////////////end
 

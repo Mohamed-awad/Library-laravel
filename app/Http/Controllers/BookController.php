@@ -17,7 +17,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return "ssssss";
+        //return "ssssss";
         $book = BookResource::collection(Book::all());
 
         if($book){
@@ -53,13 +53,19 @@ class BookController extends Controller
         $book->author = $request->input('author');
         $book->image = $request->input('image');
         $book->NumberOfBook = $request->input('NumberOfBook');
-        $book->category_Id = $request->input('categoryId');
+        $book->category_id = $request->input('categoryId');
         $book->leasePerDay = $request->input('leasePerDay');
+        if($files=$request->file('image')){
+            $name=time().$files->getClientOriginalName();
+            $book->image = $name;
+            $files->move('image',$name);
+        }
+
         if($book->save  ()){
             return new BookResource($book);
         }
         else{
-            return new BookResource("error");
+            return ("error");
         }
     }
 

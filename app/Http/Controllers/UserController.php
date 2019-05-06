@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\User as UserResource;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,6 +15,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        //$this->middleware('admin');
+    }
+
     public function index()
     {
         //where('token', $request->token)->first();
@@ -54,8 +61,10 @@ class UserController extends Controller
         $user->SSN = $request->input('SSN');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
-        
-   
+        $user->isAdmin = $request->input('isAdmin');
+
+
+
         if($user->save()){
             return new UserResource($user);
         } else {
@@ -116,6 +125,8 @@ class UserController extends Controller
         $user->SSN = $request->input('SSN');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
+        $user->isAdmin = $request->input('isAdmin');
+
         if ($user->save()) {
             return new UserResource($user);
         } else {

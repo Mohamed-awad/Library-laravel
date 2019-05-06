@@ -58,4 +58,11 @@ class User extends Model implements AuthenticatableContract
     {
         return $this->belongsToMany('App\Book', 'book_rates');
     }
+    public function isAdmin(){
+        if($this->isAdmin == 1){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

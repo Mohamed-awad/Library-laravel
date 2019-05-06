@@ -6,6 +6,10 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Resources\Category as CategoryResource;
 use App\Http\Resources\CategoryCollection;
+use Illuminate\Support\Facades\Auth;
+
+use App\User;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -14,9 +18,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        //parent::__construct();
+        //$this->middleware('admin');
+        //return "success";
+    }
     public function index()
     {
-        //return CategoryResource::collection(Category::all());
         return new CategoryCollection(Category::paginate(15));
     }
 
