@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\BookLeased;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\BookLease as BookLeaseResource;
 
 class BookLeasedController extends Controller
 {
@@ -14,9 +19,19 @@ class BookLeasedController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {       
+        $today = new DateTime('now');
+        $todayTimestamp = $today->getTimestamp();
+        $week = date('W', $todayTimestamp);
+        $year = date('y',$todayTimestamp);
+        $profit = DB::table('book_leaseds')
+        ->select('NumofWeek', DB::raw('SUM(leased) as weekly_profit'))
+        ->groupBy('NumofWeek')
+        ->orderBy('NumofWeek', 'desc')
+        ->limit(4)
+        ->get();
         return response()->json([
-            'msg' => 'hi from index@book leased',
+            'profit' => $profit,
         ]);
 
     }
@@ -39,13 +54,18 @@ class BookLeasedController extends Controller
      */
     public function store(Request $request)
     {
+        $today = new DateTime('now');
+        $todayTimestamp = $today->getTimestamp();
+        $week = date('W', $todayTimestamp);
+        $year = date('Y',$todayTimestamp);
         $bookLeased = new BookLeased;
-        $bookLeased->bookId = $request->input('bookId');
-        $bookLeased->userId = Auth::id();
+        $bookLeased->NumOfWeek = "$year"."$week";
+        $bookLeased->book_id = $request->input('book_id');
+        $bookLeased->user_id = Auth::id();
+    //    $bookLeased->user_id = 6;
         $bookLeased->leased = $request->input('leased');
         if($bookLeased->save()){
-
-            return new BookLeasedResource($bookLeased);
+            return new BookLeaseResource($bookLeased);
         }else{
             return response()->json([
                 'msg' => 'error while saving',

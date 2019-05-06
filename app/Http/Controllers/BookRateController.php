@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BookRate;
 use Illuminate\Http\Request;
+use App\Http\Resources\BookRate as BookRateResource;
 
 class BookRateController extends Controller
 {
@@ -40,7 +41,6 @@ class BookRateController extends Controller
         $bookRate->userId = Auth::id();
         $bookRate->Rate = $request->input('rate');
         if($bookRate->save()){
-
             return new BookRateResource($bookRate);
         }else{
             return response()->json([
