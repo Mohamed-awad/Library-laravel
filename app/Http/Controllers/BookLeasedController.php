@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\BookLease as BookLeaseResource;
 
 class BookLeasedController extends Controller
 {
@@ -19,39 +20,19 @@ class BookLeasedController extends Controller
      */
     public function index()
     {       
-                // $today = new DateTime('now');
-        // $todayTimestamp = $today->getTimestamp();
-                // $bookLeased->week = date('W', $todayTimestamp);
-        // $bookLeased->year = date('Y', $todayTimestamp); 
-        
-        
         $today = new DateTime('now');
         $todayTimestamp = $today->getTimestamp();
         $week = date('W', $todayTimestamp);
         $year = date('y',$todayTimestamp);
-
-        // $nameOfDay = date('D', strtotime($today));
-
-        $date = $today->modify('-1 month');
-        $last_month = BookLeased::where('created_at', '>', $date)->orderBy('created_at','desc')->get();
-        // $profit = DB::table('book_leaseds')->orderBy('created_at');
-        // ->where('active', false)
-        // $profit = BookLeased::all()
-        // $sorted = $profit->;
+        $profit = DB::table('book_leaseds')
+        ->select('NumofWeek', DB::raw('SUM(leased) as weekly_profit'))
+        ->groupBy('NumofWeek')
+        ->orderBy('NumofWeek', 'desc')
+        ->limit(4)
+        ->get();
         return response()->json([
-            'date' => $max,
+            'profit' => $profit,
         ]);
-        // return $date;
-        // find(1)->comments()->get();
-        // if($user_comments){
-        //     return new CommentResource($user_comments);
-        // }else{
-        //     return response()->json([
-        //         'msg' => 'error while saving',
-        //     ]);
-        // return response()->json([
-        //     'msg' => 'hi from index@book leased',
-        // ]);
 
     }
 
@@ -73,16 +54,18 @@ class BookLeasedController extends Controller
      */
     public function store(Request $request)
     {
-
+        $today = new DateTime('now');
+        $todayTimestamp = $today->getTimestamp();
+        $week = date('W', $todayTimestamp);
+        $year = date('Y',$todayTimestamp);
         $bookLeased = new BookLeased;
-        $bookLeased->bookId = $request->input('bookId');
-        $bookLeased->userId = Auth::id();
+        $bookLeased->NumOfWeek = "$year"."$week";
+        // $bookLeased->Year =date('Y',$todayTimestamp);
+        $bookLeased->book_id = $request->input('book_id');
+        $bookLeased->user_id = Auth::id();
         $bookLeased->leased = $request->input('leased');
-       
-
         if($bookLeased->save()){
-
-            return new BookLeasedResource($bookLeased);
+            return new BookLeaseResource($bookLeased);
         }else{
             return response()->json([
                 'msg' => 'error while saving',
