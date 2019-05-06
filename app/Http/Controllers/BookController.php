@@ -54,7 +54,7 @@ class BookController extends Controller
         $book->author = $request->input('author');
         $book->image = $request->input('image');
         $book->NumberOfBook = $request->input('NumberOfBook');
-        $book->category_id = $request->input('categoryId');
+        $book->category_id = $request->input('category_id');
         $book->leasePerDay = $request->input('leasePerDay');
         if($files=$request->file('image')){
             $name=time().$files->getClientOriginalName();
@@ -111,15 +111,15 @@ class BookController extends Controller
      */
     public function update(Request $request,$id)
     {
-        {
+
             $book = new Book;
             $book=Book::findOrFail($id);
+            //return new  BookResource($book);
             $book->title = $request->input('title');
             $book->description = $request->input('description');
             $book->author = $request->input('author');
-            $book->image = $request->input('image');
             $book->NumberOfBook = $request->input('NumberOfBook');
-            $book->categoryId = $request->input('categoryId');
+            $book->category_id = $request->input('category_id');
             $book->leasePerDay = $request->input('leasePerDay');
             if($book->save()){
                 return new BookResource($book);
@@ -128,7 +128,7 @@ class BookController extends Controller
                     'msg' => 'error while updating',
                 ]);
             }
-        }
+
     }
 
     /**
