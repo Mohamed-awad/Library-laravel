@@ -9,11 +9,11 @@ use Laravel\Passport\HasApiTokens;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model implements AuthenticatableContract
 {
-    use Notifiable, HasApiTokens, Authenticatable;
-
+    use Notifiable, HasApiTokens, Authenticatable, SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
