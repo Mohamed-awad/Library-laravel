@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
     //
+    use SoftDeletes;
     public function category()
     {
         return $this->belongsTo('App\Category');
@@ -29,5 +31,5 @@ class Book extends Model
     // {
     //     return $this->belongsToMany(Role::class, 'book_rates');
     // }
-   
+
 }
