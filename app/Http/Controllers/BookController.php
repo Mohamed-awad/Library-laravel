@@ -52,7 +52,7 @@ class BookController extends Controller
         $book->title = $request->input('title');
         $book->description = $request->input('description');
         $book->author = $request->input('author');
-        $book->image = $request->input('image');
+        //$book->image = $request->input('image');
         $book->NumberOfBook = $request->input('NumberOfBook');
         $book->category_id = $request->input('category_id');
         $book->leasePerDay = $request->input('leasePerDay');

@@ -53,7 +53,8 @@ Route::delete('/comments/{comment_id}', 'CommentController@destroy');
 Route::get('/bookss', 'BookController@index');
 Route::get('/bookss/{id}', 'BookController@show');
 Route::post('/bookss', 'BookController@store');
-Route::put('/bookss/{id}', 'CategoryController@update');
+Route::put('/bookss/{id}', 'BookController@update');
+Route::delete('/bookss/{id}', 'BookController@destroy');
 
 
     //Route::resource('products', 'ProductController');
@@ -62,5 +63,3 @@ Route::put('/bookss/{id}', 'CategoryController@update');
 
 
 /////////////end
-
-
