@@ -80,15 +80,9 @@ class BookController extends Controller
     {
 
         //
-        $book_comment = Book::find($id)->comments()->get();
-        if($book_comment ){
-            return new BookResource($book_comment);
-        }
-        else{
-            return  response()->json([
-                'msg' => 'error',
-            ]);
-        }
+        $book = new Book;
+        $book=Book::findOrFail($id);
+        return new BookResource($book);
     }
 
     /**
