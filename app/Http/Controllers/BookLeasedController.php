@@ -79,9 +79,20 @@ class BookLeasedController extends Controller
      * @param  \App\BookLeased  $bookLeased
      * @return \Illuminate\Http\Response
      */
-    public function show(BookLeased $bookLeased)
+    public function show($user_id)
     {
         //
+        // $BookLeased = BookLeased::find($user_id);
+        $BookLeased = BookLeased::where('user_id' ,'=', $user_id)->get();
+        if($BookLeased){
+            return new BookLeaseResource($BookLeased);
+        }
+        else{
+                return  response()->json([
+                    'msg' => 'error',
+                ]);
+            }
+
     }
 
     /**

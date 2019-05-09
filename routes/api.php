@@ -34,6 +34,8 @@ Route::delete('/categories/{id}', 'CategoryController@destroy');
 
 Route::get('/profits', 'BookLeasedController@index');
 Route::post('/booklease', 'BookLeasedController@store');
+Route::get('/{user_id}/booklease', 'BookLeasedController@show');
+
 
 Route::get('/users', 'UserController@index');
 Route::post('/users', 'UserController@store');
