@@ -23,8 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //////////////passport
 Route::post('/login', 'PassportController@login');
 Route::post('/register', 'PassportController@register');
-Route::get('/categories', 'CategoryController@index');
 Route::middleware('auth:api')->group(function () {
+    Route::get('/categories', 'CategoryController@index');
     Route::get('/user', 'PassportController@details');
     Route::get('/categories/{id}', 'CategoryController@show');
 Route::post('/categories', 'CategoryController@store');
